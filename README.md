@@ -18,6 +18,8 @@ A simple command-line tool to convert Markdown files to HTML using PHP and the C
 
 ## Installation
 
+### Option 1: Standard Installation
+
 1. Clone or download this repository
 2. Install dependencies using Composer:
 
@@ -25,7 +27,47 @@ A simple command-line tool to convert Markdown files to HTML using PHP and the C
 composer install
 ```
 
+### Option 2: Using the PHAR Archive
+
+If you want a single, self-contained executable file:
+
+1. Download or build the `markdown2html.phar` file (see Building PHAR section below)
+2. Use it directly without installing dependencies:
+
+```bash
+php markdown2html.phar input.md
+```
+
+On Unix systems, you can make it executable and run it directly:
+
+```bash
+chmod +x markdown2html.phar
+./markdown2html.phar input.md
+```
+
+## Building PHAR
+
+To create a standalone PHAR archive:
+
+1. First, ensure dependencies are installed:
+
+```bash
+composer install
+```
+
+2. Build the PHAR file:
+
+```bash
+php -d phar.readonly=0 build-phar.php
+```
+
+This creates `markdown2html.phar` - a single file containing the application and all dependencies.
+
+Note: The `-d phar.readonly=0` flag is required because PHP disables PHAR creation by default for security reasons.
+
 ## Usage
+
+### Using the PHP script
 
 Basic usage with automatic output filename:
 
@@ -50,6 +92,23 @@ php markdown2html.php -t input.md
 ```
 
 This will create `input.txt` with plain text output (HTML tags stripped).
+
+### Using the PHAR archive
+
+The PHAR archive works identically to the PHP script:
+
+```bash
+php markdown2html.phar input.md
+php markdown2html.phar input.md output.html
+php markdown2html.phar --text input.md
+```
+
+On Unix systems with executable permissions:
+
+```bash
+./markdown2html.phar input.md
+./markdown2html.phar -t input.md output.txt
+```
 
 ### Examples
 
@@ -89,4 +148,4 @@ The tool includes comprehensive error checking for:
 
 ## License
 
-This project is open source.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
