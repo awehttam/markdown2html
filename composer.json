@@ -1,0 +1,8 @@
+{
+    "name": "markdown2html/converter",
+    "description": "Markdown to HTML converter",
+    "type": "project",
+    "require": {
+        "league/commonmark": "^2.7"
+    }
+}
